@@ -37,6 +37,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.tabWidget = QtGui.QTabWidget(self.centralwidget)
         self.tabWidget.setGeometry(QtCore.QRect(0, 0, 481, 321))
+        self.tabWidget.setToolTip(_fromUtf8(""))
         self.tabWidget.setStyleSheet(_fromUtf8("Log\n"
 "color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(0, 0, 0, 255), stop:0.19397 rgba(0, 0, 0, 255), stop:0.202312 rgba(122, 97, 0, 255), stop:0.495514 rgba(76, 58, 0, 255), stop:0.504819 rgba(255, 255, 255, 255), stop:0.79 rgba(255, 255, 255, 255), stop:1 rgba(255, 158, 158, 255));\n"
 "color: rgb(174, 255, 239);\n"
@@ -45,13 +46,13 @@ class Ui_MainWindow(object):
         self.mainTab = QtGui.QWidget()
         self.mainTab.setObjectName(_fromUtf8("mainTab"))
         self.checkButton = QtGui.QPushButton(self.mainTab)
-        self.checkButton.setGeometry(QtCore.QRect(380, 140, 81, 31))
+        self.checkButton.setGeometry(QtCore.QRect(380, 150, 81, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.checkButton.setFont(font)
         self.checkButton.setObjectName(_fromUtf8("checkButton"))
         self.resultLabel = QtGui.QLabel(self.mainTab)
-        self.resultLabel.setGeometry(QtCore.QRect(10, 180, 451, 91))
+        self.resultLabel.setGeometry(QtCore.QRect(10, 190, 451, 81))
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Courier 10 Pitch"))
         font.setPointSize(10)
@@ -59,15 +60,23 @@ class Ui_MainWindow(object):
         self.resultLabel.setFrameShape(QtGui.QFrame.Panel)
         self.resultLabel.setFrameShadow(QtGui.QFrame.Sunken)
         self.resultLabel.setText(_fromUtf8(""))
-        self.resultLabel.setTextFormat(QtCore.Qt.AutoText)
+        self.resultLabel.setTextFormat(QtCore.Qt.RichText)
+        self.resultLabel.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.resultLabel.setWordWrap(True)
         self.resultLabel.setObjectName(_fromUtf8("resultLabel"))
-        self.passInput = QtGui.QPlainTextEdit(self.mainTab)
-        self.passInput.setGeometry(QtCore.QRect(10, 140, 361, 31))
-        self.passInput.setObjectName(_fromUtf8("passInput"))
-        self.label = QtGui.QLabel(self.mainTab)
-        self.label.setGeometry(QtCore.QRect(10, 10, 451, 121))
-        self.label.setObjectName(_fromUtf8("label"))
+        self.infoLabel = QtGui.QLabel(self.mainTab)
+        self.infoLabel.setGeometry(QtCore.QRect(10, 10, 451, 131))
+        self.infoLabel.setObjectName(_fromUtf8("infoLabel"))
+        self.passwordLineEdit = QtGui.QLineEdit(self.mainTab)
+        self.passwordLineEdit.setGeometry(QtCore.QRect(10, 150, 361, 29))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.passwordLineEdit.setFont(font)
+        self.passwordLineEdit.setCursor(QtGui.QCursor(QtCore.Qt.IBeamCursor))
+        self.passwordLineEdit.setAutoFillBackground(True)
+        self.passwordLineEdit.setEchoMode(QtGui.QLineEdit.Password)
+        self.passwordLineEdit.setReadOnly(False)
+        self.passwordLineEdit.setObjectName(_fromUtf8("passwordLineEdit"))
         self.tabWidget.addTab(self.mainTab, _fromUtf8(""))
         self.logTab = QtGui.QWidget()
         self.logTab.setAutoFillBackground(False)
@@ -177,17 +186,18 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "pwnCheck", None))
-        self.tabWidget.setToolTip(_translate("MainWindow", "<html><head/><body><p align=\"center\">Log</p></body></html>", None))
         self.tabWidget.setWhatsThis(_translate("MainWindow", "<html><head/><body><p align=\"center\">Log</p></body></html>", None))
         self.checkButton.setText(_translate("MainWindow", "Check", None))
-        self.label.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.infoLabel.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">How it works:</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:296;\">1. Entered password SHA1 hash calculated.</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:296;\">2. All results with matching first 5 hash symbols are pulled from internet database. </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:296;\">3. Full hash match cheked localy on users PC.</span></p></body></html>", None))
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">How this program works:</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:296;\">1. SHA1 hash calculated of  a password.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:296;\">2. Prefix variable is set to first 5 symbols of the hash.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:296;\">3. All hashes with matching prefix are pulled from </span><span style=\" font-weight:296; font-style:italic;\">pwnedpasswords.com DB</span><span style=\" font-weight:296;\">.</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:296;\">4. Password hash match checked </span><span style=\" font-weight:600;\">localy</span><span style=\" font-weight:296;\"> on users PC.</span></p></body></html>", None))
+        self.passwordLineEdit.setPlaceholderText(_translate("MainWindow", "Enter password", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.mainTab), _translate("MainWindow", "Main", None))
         self.logLabel.setText(_translate("MainWindow", "TextLabel", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.logTab), _translate("MainWindow", "Log", None))

@@ -31,10 +31,10 @@ This file is part of OpenVPN_GUI.
 
 
 from PyQt4 import QtGui # Import the PyQt4 module we'll need
-from PyQt4.QtCore import QThread, SIGNAL
 import sys  # We need sys so that we can pass argv to QApplication
-import os  # For listing directory methods and executing bash commands
-import time
+import hashlib
+import urllib2
+import re
 import qtGUI  # This file holds our MainWindow and all design related things
 
 
@@ -45,6 +45,8 @@ class App(QtGui.QMainWindow, qtGUI.Ui_MainWindow):
         super(self.__class__, self).__init__()
         self.setupUi(self)  # This is defined in design.py file automatically
         # It sets up layout and widgets that are defined
+        self.checkButton.clicked.connect(self.pwncheck)
+        self.passwordLineEdit.returnPressed.connect(self.pwncheck)
         self.fill_info()
 
     def fill_info(self):
@@ -63,6 +65,25 @@ class App(QtGui.QMainWindow, qtGUI.Ui_MainWindow):
             self.license = "No README file found"
 
         self.licenseLabel.setText(self.license)
+
+    def pwncheck(self):
+        self.output_text = "SHA1: "
+        self.password_hash = hashlib.sha1(str(self.passwordLineEdit.text())).hexdigest()
+        self.output_text += "<b>" + self.password_hash + "</b>" + "<br>"
+        self.prefix = self.password_hash[0:5]
+        self.postfix = self.password_hash[5:].upper()
+        self.output_text += "prefix: " + "<b>" + self.prefix + "</b>" + "<br>"
+        self.url = "https://api.pwnedpasswords.com/range/" + self.prefix
+        self.prefix_matches = urllib2.urlopen(self.url).read()
+        self.prefix_matches_count = len(self.prefix_matches.split('\n'))
+        self.output_text += "found " + "<b>" + str(self.prefix_matches_count) + "</b>" + " prefix matches" + "<br>"
+        self.password_match = re.search(self.postfix, self.prefix_matches)
+        if self.password_match:
+            self.output_text += "password pwned"
+        else:
+            self.output_text += "password was not found in the DB"
+
+        self.resultLabel.setText(self.output_text)
 
 def main():
     app = QtGui.QApplication(sys.argv)  # A new instance of QApplication
