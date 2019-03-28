@@ -93,6 +93,15 @@ font: 75 italic 9pt &quot;Noto Sans&quot;;</string>
         <pointsize>10</pointsize>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>IBeamCursor</cursorShape>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="frameShape">
        <enum>QFrame::Panel</enum>
       </property>
@@ -114,6 +123,9 @@ font: 75 italic 9pt &quot;Noto Sans&quot;;</string>
       <property name="margin">
        <number>0</number>
       </property>
+      <property name="textInteractionFlags">
+       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+      </property>
      </widget>
      <widget class="QLabel" name="infoLabel">
       <property name="geometry">
@@ -124,6 +136,9 @@ font: 75 italic 9pt &quot;Noto Sans&quot;;</string>
         <height>131</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>IBeamCursor</cursorShape>
+      </property>
       <property name="text">
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -131,9 +146,12 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;How this program works:&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:296;&quot;&gt;1. SHA1 hash calculated of  a password.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:296;&quot;&gt;2. Prefix variable is set to first 5 symbols of the hash.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:296;&quot;&gt;3. All hashes with matching prefix are pulled from &lt;/span&gt;&lt;span style=&quot; font-weight:296; font-style:italic;&quot;&gt;pwnedpasswords.com DB&lt;/span&gt;&lt;span style=&quot; font-weight:296;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:296;&quot;&gt;2. Prefix variable is set to first 5 symbols of a hash.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:296;&quot;&gt;3. All hashes with matching prefix are pulled from &lt;/span&gt;&lt;span style=&quot; font-weight:296; font-style:italic;&quot;&gt;pwnedpasswords.com &lt;/span&gt;&lt;span style=&quot; font-weight:296;&quot;&gt;DB.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:296;&quot;&gt;4. Password hash match checked &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;localy&lt;/span&gt;&lt;span style=&quot; font-weight:296;&quot;&gt; on users PC.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
       </property>
      </widget>
      <widget class="QLineEdit" name="passwordLineEdit">
@@ -154,7 +172,7 @@ p, li { white-space: pre-wrap; }
        <cursorShape>IBeamCursor</cursorShape>
       </property>
       <property name="autoFillBackground">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="echoMode">
        <enum>QLineEdit::Password</enum>
@@ -167,54 +185,71 @@ p, li { white-space: pre-wrap; }
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="logTab">
-     <property name="autoFillBackground">
-      <bool>false</bool>
-     </property>
+    <widget class="QWidget" name="aboutTab">
      <attribute name="title">
-      <string>Log</string>
+      <string>About</string>
      </attribute>
-     <widget class="QScrollArea" name="logScrollArea">
+     <widget class="QScrollArea" name="aboutScrollArea">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>1</y>
-        <width>471</width>
-        <height>281</height>
+        <y>0</y>
+        <width>481</width>
+        <height>291</height>
        </rect>
       </property>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="logScroll">
+      <widget class="QWidget" name="aboutScroll">
        <property name="geometry">
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>469</width>
-         <height>279</height>
+         <width>466</width>
+         <height>551</height>
         </rect>
        </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLabel" name="logLabel">
-          <property name="font">
-           <font>
-            <family>Courier 10 Pitch</family>
-            <pointsize>8</pointsize>
-           </font>
+         <widget class="QLabel" name="aboutLabel">
+          <property name="cursor">
+           <cursorShape>IBeamCursor</cursorShape>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
+          <property name="autoFillBackground">
+           <bool>true</bool>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
-          <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
+          <property name="lineWidth">
+           <number>1</number>
           </property>
           <property name="text">
-           <string>TextLabel</string>
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Noto Sans'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;VERSION&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Version: 1.0&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Build date: 2019-03-28&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;DESCRIPTION&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This program is a graphical user interface for checking pwned passwords, it's writen with &lt;span style=&quot; font-weight:600;&quot;&gt;python&lt;/span&gt; and &lt;span style=&quot; font-weight:600;&quot;&gt;pyQT4&lt;/span&gt;. Program calculates password hash and then searches for matches with first 5 symbols (prefix) in &lt;span style=&quot; font-style:italic;&quot;&gt;https://api.pwnedpasswords.com&lt;/span&gt;, then full hash match is found localy on users PC.&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;CONTACTS&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright (C) 2019 Martynas J. &lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;f5AFfMhv@protonmail.com &lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;https://github.com/f5AFfMhv&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;LICENSE&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;pwnCheck&lt;/span&gt; is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. &lt;span style=&quot; font-weight:600;&quot;&gt;pwnCheck&lt;/span&gt; is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with &lt;span style=&quot; font-weight:600;&quot;&gt;pwnCheck&lt;/span&gt;. If not, see &amp;lt;https://www.gnu.org/licenses/&amp;gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="textFormat">
-           <enum>Qt::LogText</enum>
+           <enum>Qt::RichText</enum>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -222,164 +257,22 @@ p, li { white-space: pre-wrap; }
           <property name="wordWrap">
            <bool>true</bool>
           </property>
+          <property name="margin">
+           <number>10</number>
+          </property>
+          <property name="indent">
+           <number>-1</number>
+          </property>
+          <property name="openExternalLinks">
+           <bool>false</bool>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::TextSelectableByMouse</set>
+          </property>
          </widget>
         </item>
        </layout>
       </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="aboutTab">
-     <attribute name="title">
-      <string>About</string>
-     </attribute>
-     <widget class="QTabWidget" name="tabWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>30</y>
-        <width>441</width>
-        <height>241</height>
-       </rect>
-      </property>
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="descriptionTab">
-       <attribute name="title">
-        <string>Description</string>
-       </attribute>
-       <widget class="QScrollArea" name="descriptionScrollArea">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>-1</y>
-          <width>441</width>
-          <height>211</height>
-         </rect>
-        </property>
-        <property name="widgetResizable">
-         <bool>true</bool>
-        </property>
-        <widget class="QWidget" name="descriptionScroll">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>439</width>
-           <height>209</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QLabel" name="descriptionLabel">
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-              <weight>50</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="textFormat">
-             <enum>Qt::RichText</enum>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="changelogTab">
-       <attribute name="title">
-        <string>Changelog</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="bugsTab">
-       <attribute name="title">
-        <string>Known bugs</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="licenseTab">
-       <attribute name="title">
-        <string>License</string>
-       </attribute>
-       <widget class="QScrollArea" name="licenseScrollArea">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>441</width>
-          <height>211</height>
-         </rect>
-        </property>
-        <property name="widgetResizable">
-         <bool>true</bool>
-        </property>
-        <widget class="QWidget" name="licenseScroll">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>439</width>
-           <height>209</height>
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QLabel" name="licenseLabel">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-            <property name="textFormat">
-             <enum>Qt::PlainText</enum>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignJustify|Qt::AlignTop</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </widget>
-      </widget>
-     </widget>
-     <widget class="QLabel" name="headerLabel">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>0</y>
-        <width>401</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Password pwn checking GUI</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
      </widget>
     </widget>
    </widget>
@@ -388,8 +281,6 @@ p, li { white-space: pre-wrap; }
  <tabstops>
   <tabstop>checkButton</tabstop>
   <tabstop>tabWidget</tabstop>
-  <tabstop>tabWidget_2</tabstop>
-  <tabstop>licenseScrollArea</tabstop>
  </tabstops>
  <resources/>
  <connections/>
