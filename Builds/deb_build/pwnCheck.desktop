@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=pwnCheck
+Comment=pwnCheck
+Exec=/usr/bin/pwnCheck
+Icon=/usr/share/icons/default/password-2.ico
+Terminal=false
+Categories=Utility
+Keywords=password
+Name[en_US]=pwnCheck
