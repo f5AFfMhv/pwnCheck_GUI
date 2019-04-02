@@ -6,6 +6,7 @@ then full hash match is found <b>localy</b> on users machine.
 <br>
 <b>NOTE:</b> there are no support for proxies.
 <br>
+<br>
 ![pwnCheck](https://raw.githubusercontent.com/f5AFfMhv/pwnCheck_GUI/master/pwnCheck_v1.png)
 
  <h3>Prebuild packages</h3>
