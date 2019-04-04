@@ -11,21 +11,7 @@ then full hash match is found <b>localy</b> on users machine.
 ![pwnCheck](https://raw.githubusercontent.com/f5AFfMhv/pwnCheck_GUI/master/pwnCheck_v1.png)
 
  <h3>Prebuild packages</h3>
-You can download prebuild packages from sourceforge. Executables were made with <b>pyinstaller</b>.
- <table style="width:100%">
-  <tr>
-    <th>Link</th>
-    <th>Tested</th>
-  </tr>
-  <tr>
-    <td><a href="https://sourceforge.net/projects/pwncheck/files/pwnCheck_v1.0_amd64.exe/download">pwnCheck_v1.0_amd64.exe</a></td>
-    <td>Windows 10 <br> Windows 7</td>
-  </tr>
-  <tr>
-    <td><a href="https://sourceforge.net/projects/pwncheck/files/pwnCheck_1.0_amd64.deb/download">pwnCheck_1.0_amd64.deb</a></td>
-    <td>LinuxMint 19 <br> Ubuntu 18</td>
-  </tr>
-</table> 
+You can download prebuild packages from <a href="https://github.com/f5AFfMhv/pwnCheck_GUI/releases">release page</a>
 
 <h3>Dependencies</h3>
 <ul>
